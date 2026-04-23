@@ -68,7 +68,6 @@ public class Store {
 
             while ((line = reader.readLine()) != null) {
 
-
                 String[] divider = line.split("\\|");
                 String id = divider[0];
                 String name = divider[1];
@@ -79,16 +78,13 @@ public class Store {
 
                 count++;
             }
-
         } catch (Exception ex) {
             ex.printStackTrace();
             System.err.println("Something went wrong");
         }
-
         // TODO: read each line, split on "|",
         //       create a Product object, and add it to the inventory list
     }
-
     /**
      * Displays all products and lets the user add one to the cart.
      * Typing X returns to the main menu.
@@ -97,13 +93,9 @@ public class Store {
         for (Product product : inventory) {
             System.out.println(product);
         }
-
-
-
         // TODO: show each product (id, name, price),
         //       prompt for an id, find that product, add to cart
     }
-
     /**
      * Shows the contents of the cart, calculates the total,
      * and offers the option to check out.
@@ -115,7 +107,6 @@ public class Store {
         //   • ask the user whether to check out (C) or return (X)
         //   • if C, call checkOut(cart, totalAmount, scanner)
     }
-
     /**
      * Handles the checkout process:
      * 1. Confirm that the user wants to buy.
@@ -128,7 +119,6 @@ public class Store {
                                 Scanner scanner) {
         // TODO: implement steps listed above
     }
-
     /**
      * Searches a list for a product by its id.
      *
