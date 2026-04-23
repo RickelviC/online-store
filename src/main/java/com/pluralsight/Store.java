@@ -1,7 +1,10 @@
 
 package com.pluralsight;
 
+import java.io.BufferedReader;
+import java.io.FileReader;
 import java.util.ArrayList;
+import java.util.List;
 import java.util.Scanner;
 
 /**
@@ -13,8 +16,8 @@ public class Store {
     public static void main(String[] args) {
 
         // Create lists for inventory and the shopping cart
-        ArrayList<Product> inventory = new ArrayList<>();
-        ArrayList<Product> cart = new ArrayList<>();
+        List<Product> inventory = new ArrayList<>();
+        List<Product> cart = new ArrayList<>();
 
         // Load inventory from the data file (pipe-delimited: id|name|price)
         loadInventory("products.csv", inventory);
@@ -55,7 +58,33 @@ public class Store {
      * Example line:
      * A17|Wireless Mouse|19.99
      */
-    public static void loadInventory(String fileName, ArrayList<Product> inventory) {
+    public static void loadInventory(String fileName, List<Product> inventory) {
+        String line;
+
+        try {
+            BufferedReader reader = new BufferedReader(new FileReader(fileName));
+
+            int count = 0;
+
+            while ((line = reader.readLine()) != null) {
+
+
+                String[] divider = line.split("\\|");
+                String id = divider[0];
+                String name = divider[1];
+                double price = Double.parseDouble(divider[2]);
+
+                Product product = new Product(id, name, price);
+                inventory.add(count, product);
+
+                count++;
+            }
+
+        } catch (Exception ex) {
+            ex.printStackTrace();
+            System.err.println("Something went wrong");
+        }
+
         // TODO: read each line, split on "|",
         //       create a Product object, and add it to the inventory list
     }
@@ -64,8 +93,8 @@ public class Store {
      * Displays all products and lets the user add one to the cart.
      * Typing X returns to the main menu.
      */
-    public static void displayProducts(ArrayList<Product> inventory,
-                                       ArrayList<Product> cart,
+    public static void displayProducts(List<Product> inventory,
+                                       List<Product> cart,
                                        Scanner scanner) {
         // TODO: show each product (id, name, price),
         //       prompt for an id, find that product, add to cart
@@ -75,7 +104,7 @@ public class Store {
      * Shows the contents of the cart, calculates the total,
      * and offers the option to check out.
      */
-    public static void displayCart(ArrayList<Product> cart, Scanner scanner) {
+    public static void displayCart(List<Product> cart, Scanner scanner) {
         // TODO:
         //   • list each product in the cart
         //   • compute the total cost
@@ -90,7 +119,7 @@ public class Store {
      * 3. Display a simple receipt.
      * 4. Clear the cart.
      */
-    public static void checkOut(ArrayList<Product> cart,
+    public static void checkOut(List<Product> cart,
                                 double totalAmount,
                                 Scanner scanner) {
         // TODO: implement steps listed above
@@ -101,7 +130,7 @@ public class Store {
      *
      * @return the matching Product, or null if not found
      */
-    public static Product findProductById(String id, ArrayList<Product> inventory) {
+    public static Product findProductById(String id, List<Product> inventory) {
         // TODO: loop over the list and compare ids
         return null;
     }
