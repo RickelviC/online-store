@@ -85,6 +85,7 @@ public class Store {
         // TODO: read each line, split on "|",
         //       create a Product object, and add it to the inventory list
     }
+
     /**
      * Displays all products and lets the user add one to the cart.
      * Typing X returns to the main menu.
@@ -93,9 +94,29 @@ public class Store {
         for (Product product : inventory) {
             System.out.println(product);
         }
+        /*while (true) {
+            System.out.print("What item # are you interested in? ");
+            String id = scanner.nextLine();
+
+            Product matchedProduct = findProductById();
+
+            if (matchedProduct == null) {
+                System.out.println("We don't carry that product");
+            } else {
+                System.out.printf("We carry %s and the price is $%.2f", matchedProduct.getName(), matchedProduct.getPrice());
+            }
+            System.out.println();
+            System.out.println("Do you want to Stop?(y to quit) ");
+            String input = scanner.nextLine();
+            if (input.equalsIgnoreCase("y")) {
+                return;
+            }
+        }*/
+
         // TODO: show each product (id, name, price),
         //       prompt for an id, find that product, add to cart
     }
+
     /**
      * Shows the contents of the cart, calculates the total,
      * and offers the option to check out.
@@ -107,6 +128,7 @@ public class Store {
         //   • ask the user whether to check out (C) or return (X)
         //   • if C, call checkOut(cart, totalAmount, scanner)
     }
+
     /**
      * Handles the checkout process:
      * 1. Confirm that the user wants to buy.
@@ -114,19 +136,27 @@ public class Store {
      * 3. Display a simple receipt.
      * 4. Clear the cart.
      */
-    public static void checkOut(List<Product> cart,
-                                double totalAmount,
-                                Scanner scanner) {
+    public static void checkOut(List<Product> cart, double totalAmount, Scanner scanner) {
         // TODO: implement steps listed above
     }
+
     /**
      * Searches a list for a product by its id.
      *
      * @return the matching Product, or null if not found
      */
     public static Product findProductById(String id, List<Product> inventory) {
-        // TODO: loop over the list and compare ids
-        return null;
+        while (true) {
+            Product matchedProduct = inventory.(id);
+
+            if (matchedProduct == null) {
+                System.out.println("We don't carry that product");
+            } else {
+                System.out.printf("We carry %s and the price is $%.2f", matchedProduct.getName(), matchedProduct.getPrice());
+            }
+        }
+        return matchedProduct;
     }
+    // TODO: loop over the list and compare ids
 }
 
