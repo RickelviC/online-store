@@ -1,15 +1,21 @@
-# Project Title
+# online-store
 
 ## Description of the Project
 
-Briefly describe what this Java console application does. Mention its purpose and who the intended users are. Explain the main functionality and what problems it aims to solve.
+this is a simple command line Online Store
+application. The application will have a CLI user
+interface that is the storefront for users to shop 
+at in a store
 
 ## User Stories
 
-List the user stories that guided the development of your application. Format these stories as: "As a [type of user], I want [some goal] so that [some reason]."
+as a customer, I want to view the options i have in the home screen of the store, so that i can see where and what i can do before picking
 
-- As a user, I want to be able to input my data, so that the application can process it accordingly.
-- As a user, I want to receive immediate feedback, so I can understand what to do next.
+as a customer, I want to view the products i can buy from the store, so that i know what i am going to be buying
+
+as a customer, i want to view all the items i am thinking of buying, so i can rethink if i want to buy them or not
+
+as a customer, i want to view the amount i need to pay, so i can give the right amount of money need for these items
 
 ## Setup
 
