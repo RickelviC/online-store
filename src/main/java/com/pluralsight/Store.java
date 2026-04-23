@@ -93,9 +93,13 @@ public class Store {
      * Displays all products and lets the user add one to the cart.
      * Typing X returns to the main menu.
      */
-    public static void displayProducts(List<Product> inventory,
-                                       List<Product> cart,
-                                       Scanner scanner) {
+    public static void displayProducts(List<Product> inventory, List<Product> cart, Scanner scanner) {
+        for (Product product : inventory) {
+            System.out.println(product);
+        }
+
+
+
         // TODO: show each product (id, name, price),
         //       prompt for an id, find that product, add to cart
     }
