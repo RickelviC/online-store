@@ -145,27 +145,34 @@ public class Store {
         for (Product product : cart) {
             System.out.println(product);
         }
+
         double price = 0;
         for (Product priceCart : cart) {
             price += priceCart.getPrice();
         }
-        System.out.println("Your total is : $" + price);
 
-        String input;
+        if (price != 0){
+            System.out.println("Your total is : $" + price);
 
-        System.out.println();
-        System.out.println("Do you want to Stop?:(X/C)");
-        System.out.println("(X to go back to main menu) or (C to continue to cart)");
-        do {
-            input = scanner.nextLine();
-            if (input.equalsIgnoreCase("x")) {
-                return;
-            } else if (input.equalsIgnoreCase("c")) {
-                checkOut(cart, price, scanner);
-            } else {
-                System.out.println("invalid input please try again");
-            }
-        } while (!input.equalsIgnoreCase("c"));
+            String input;
+
+            System.out.println();
+            System.out.println("Do you want to Stop?:(X/C)");
+            System.out.println("(X to go back to main menu) or (C to continue to cart)");
+            do {
+                input = scanner.nextLine();
+                if (input.equalsIgnoreCase("x")) {
+                    return;
+                } else if (input.equalsIgnoreCase("c")) {
+                    checkOut(cart, price, scanner);
+                } else {
+                    System.out.println("invalid input please try again");
+                }
+            } while (!input.equalsIgnoreCase("c"));
+        }else {
+            System.out.println("no items in cart yet");
+        }
+
 
 
         // TODO:
