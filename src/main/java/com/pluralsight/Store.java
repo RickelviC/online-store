@@ -89,6 +89,7 @@ public class Store {
             System.out.println(product);
         }
         while (true) {
+            System.out.println();
             System.out.print("What item ID are you interested in?(X return to main menu): ");
             String id = scanner.nextLine();
 
@@ -105,33 +106,6 @@ public class Store {
                 return;
             }
         }
-        /*String input = "x";
-
-        do {
-            System.out.print("What item # are you interested in? ");
-            String id = scanner.nextLine();
-
-            Product matchedProduct = findProductById(id, inventory);
-
-            if (matchedProduct == null) {
-                System.out.println("We don't carry that product");
-                System.out.println();
-                System.out.println("Do you want to Stop?");
-                System.out.println("(x to go back to main menu)or (c to continue to cart)");
-
-                input = scanner.nextLine();
-                if (input.equalsIgnoreCase("x")) {
-                    return;
-                } else if (input.equalsIgnoreCase("c")) {
-                    displayCart(cart,scanner);
-                }
-            } else {
-                System.out.printf("We carry %s and the price is $%.2f", matchedProduct.getName(), matchedProduct.getPrice());
-                cart.add(matchedProduct);
-            }
-
-
-        }while (!input.equalsIgnoreCase("c"));*/
 
         // TODO: show each product (id, name, price),
         //       prompt for an id, find that product, add to cart
@@ -157,8 +131,8 @@ public class Store {
             String input;
 
             System.out.println();
-            System.out.println("Do you want to Stop?:(X/C)");
-            System.out.println("(X to go back to main menu) or (C to continue to cart)");
+            System.out.println("Do you want to Return to main menu Or Checkout?:(X/C)");
+            System.out.println("(X to go back to main menu) or (C to continue to Checkout cart)");
             do {
                 input = scanner.nextLine();
                 if (input.equalsIgnoreCase("x")) {
