@@ -3,9 +3,7 @@ package com.pluralsight;
 
 import java.io.BufferedReader;
 import java.io.FileReader;
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Scanner;
+import java.util.*;
 
 /**
  * Starter code for the Online Store workshop.
@@ -64,8 +62,6 @@ public class Store {
         try {
             BufferedReader reader = new BufferedReader(new FileReader(fileName));
 
-            int count = 0;
-
             while ((line = reader.readLine()) != null) {
 
                 String[] divider = line.split("\\|");
@@ -74,12 +70,11 @@ public class Store {
                 double price = Double.parseDouble(divider[2]);
 
                 Product product = new Product(id, name, price);
-                inventory.add(count, product);
+                inventory.add(product);
 
-                count++;
             }
         } catch (Exception ex) {
-            ex.printStackTrace();
+            //ex.printStackTrace();
             System.err.println("Something went wrong");
         }
         // TODO: read each line, split on "|",
@@ -94,11 +89,11 @@ public class Store {
         for (Product product : inventory) {
             System.out.println(product);
         }
-        /*while (true) {
+        while (true) {
             System.out.print("What item # are you interested in? ");
             String id = scanner.nextLine();
 
-            Product matchedProduct = findProductById();
+            Product matchedProduct = findProductById(id, inventory);
 
             if (matchedProduct == null) {
                 System.out.println("We don't carry that product");
@@ -111,7 +106,7 @@ public class Store {
             if (input.equalsIgnoreCase("y")) {
                 return;
             }
-        }*/
+        }
 
         // TODO: show each product (id, name, price),
         //       prompt for an id, find that product, add to cart
@@ -146,17 +141,17 @@ public class Store {
      * @return the matching Product, or null if not found
      */
     public static Product findProductById(String id, List<Product> inventory) {
-        while (true) {
-            Product matchedProduct = inventory.(id);
 
-            if (matchedProduct == null) {
-                System.out.println("We don't carry that product");
-            } else {
-                System.out.printf("We carry %s and the price is $%.2f", matchedProduct.getName(), matchedProduct.getPrice());
+        for (Product product : inventory) {
+            if (product.getId().equalsIgnoreCase(id)) {
+                return product;
             }
         }
-        return matchedProduct;
+
+        return null;
+
+        // TODO: loop over the list and compare ids
     }
-    // TODO: loop over the list and compare ids
 }
+
 
