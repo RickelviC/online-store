@@ -116,9 +116,14 @@ public class Store {
      * and offers the option to check out.
      */
     public static void displayCart(List<Product> cart, Scanner scanner) {
-        for (Product product : cart) {
-            System.out.println(product);
+        HashSet<Product> uniqueProduct = new HashSet<>(cart);
+        for (Product product : uniqueProduct) {
+            System.out.println(product + " : " + Collections.frequency(cart,product) );
         }
+
+        /*for (Product product : cart) {
+            System.out.println(product);
+        }*/
 
         double price = 0;
         for (Product priceCart : cart) {
@@ -126,7 +131,7 @@ public class Store {
         }
 
         if (price != 0) {
-            System.out.println("Your total is : $" + price);
+            System.out.printf("\nYour total is : $%.2f", price);
 
             String input;
 
@@ -165,7 +170,7 @@ public class Store {
     public static void checkOut(List<Product> cart, double totalAmount, Scanner scanner) {
 
 
-        System.out.println("your total is : $" + totalAmount);
+        System.out.printf("your total is : $%.2f\n" , totalAmount);
         System.out.println("enter your payment amount: ");
 
         boolean isTrue = true;
@@ -177,7 +182,7 @@ public class Store {
 
             if (payment >= totalAmount) {
                 double change = payment - totalAmount;
-                System.out.printf("Your change is: $%.2f, Thank you for shopping with us", change);
+                System.out.printf("\nYour change is: $%.2f, Thank you for shopping with us", change);
                 cart.clear();
                 isTrue = false;
                 return;
