@@ -74,7 +74,6 @@ public class Store {
 
             }
         } catch (Exception ex) {
-            //ex.printStackTrace();
             System.err.println("Something went wrong");
         }
         // TODO: read each line, split on "|",
@@ -132,6 +131,7 @@ public class Store {
         }
         System.out.println("Your total is : $" + price);
 
+
         String input;
 
         do {
@@ -142,8 +142,8 @@ public class Store {
             if (input.equalsIgnoreCase("x")) {
                 return;
             } else if (input.equalsIgnoreCase("c")) {
-                checkOut(cart,price,scanner);
-            }else {
+                checkOut(cart, price, scanner);
+            } else {
                 System.out.println("invalid input please try again");
             }
         } while (!input.equalsIgnoreCase("c"));
@@ -168,12 +168,12 @@ public class Store {
         System.out.println("are you ready to checkout?: (y/n): ");
         String input = scanner.nextLine();
 
-        if (input.equalsIgnoreCase("y")){
+        if (input.equalsIgnoreCase("y")) {
             System.out.println("your total is : $" + totalAmount);
             System.out.println("enter your payment amount");
             double payment = scanner.nextDouble();
             scanner.nextLine();
-            if (payment >= totalAmount){
+            if (payment >= totalAmount) {
                 double change = payment - totalAmount;
                 System.out.printf("Your change is: $%.2f", change);
                 cart.clear();
@@ -207,5 +207,3 @@ public class Store {
         // TODO: loop over the list and compare ids
     }
 }
-
-
