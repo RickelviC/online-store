@@ -183,10 +183,8 @@ public class Store {
                 return;
             } else {
                 System.out.println("Not enough money, Please enter more: ");
-
             }
         }
-
 
         // TODO: implement steps listed above
     }
@@ -207,4 +205,6 @@ public class Store {
 
         // TODO: loop over the list and compare ids
     }
+
+
 }
