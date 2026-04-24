@@ -143,6 +143,8 @@ public class Store {
                 return;
             } else if (input.equalsIgnoreCase("c")) {
                 checkOut(cart,price,scanner);
+            }else {
+                System.out.println("invalid input please try again");
             }
         } while (!input.equalsIgnoreCase("c"));
 
@@ -163,6 +165,27 @@ public class Store {
      */
     public static void checkOut(List<Product> cart, double totalAmount, Scanner scanner) {
 
+        System.out.println("are you ready to checkout?: (y/n): ");
+        String input = scanner.nextLine();
+
+        if (input.equalsIgnoreCase("y")){
+            System.out.println("your total is : $" + totalAmount);
+            System.out.println("enter your payment amount");
+            double payment = scanner.nextDouble();
+            scanner.nextLine();
+            if (payment >= totalAmount){
+                double change = payment - totalAmount;
+                System.out.printf("Your change is: $%.2f", change);
+                cart.clear();
+            } else {
+                System.out.println("that is not enough money");
+            }
+
+        } else if (input.equalsIgnoreCase("n")) {
+            System.out.println("going back to home screen");
+        } else {
+            System.out.println("invalid input please try again");
+        }
 
         // TODO: implement steps listed above
     }
