@@ -100,10 +100,13 @@ public class Store {
             } else {
                 System.out.printf("We carry %s and the price is $%.2f", matchedProduct.getName(), matchedProduct.getPrice());
             }
+
+            cart.add(matchedProduct);
+
             System.out.println();
-            System.out.println("Do you want to Stop?(y to quit) ");
+            System.out.println("Do you want to Stop?(x to go back to main menu) ");
             String input = scanner.nextLine();
-            if (input.equalsIgnoreCase("y")) {
+            if (input.equalsIgnoreCase("x")) {
                 return;
             }
         }
@@ -117,6 +120,9 @@ public class Store {
      * and offers the option to check out.
      */
     public static void displayCart(List<Product> cart, Scanner scanner) {
+        for (Product product : cart) {
+            System.out.println(product);
+        }
         // TODO:
         //   • list each product in the cart
         //   • compute the total cost
@@ -132,6 +138,8 @@ public class Store {
      * 4. Clear the cart.
      */
     public static void checkOut(List<Product> cart, double totalAmount, Scanner scanner) {
+
+
         // TODO: implement steps listed above
     }
 
@@ -147,7 +155,6 @@ public class Store {
                 return product;
             }
         }
-
         return null;
 
         // TODO: loop over the list and compare ids
