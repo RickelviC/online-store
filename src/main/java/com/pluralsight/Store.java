@@ -117,13 +117,10 @@ public class Store {
      */
     public static void displayCart(List<Product> cart, Scanner scanner) {
         HashSet<Product> uniqueProduct = new HashSet<>(cart);
+
         for (Product product : uniqueProduct) {
             System.out.println(product + " : " + Collections.frequency(cart,product) );
         }
-
-        /*for (Product product : cart) {
-            System.out.println(product);
-        }*/
 
         double price = 0;
         for (Product priceCart : cart) {
