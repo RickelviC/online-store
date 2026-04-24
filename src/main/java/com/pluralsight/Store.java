@@ -89,22 +89,22 @@ public class Store {
             System.out.println(product);
         }
         while (true) {
-            System.out.println();
-            System.out.print("What item ID are you interested in?(X return to main menu): ");
+            System.out.print("\nWhat item ID are you interested in?(X return to main menu): ");
             String id = scanner.nextLine();
 
             Product matchedProduct = findProductById(id, inventory);
 
-            if (matchedProduct == null) {
-                System.out.println("We don't carry that product");
-            } else {
-                System.out.printf("We carry %s and the price is $%.2f", matchedProduct.getName(), matchedProduct.getPrice());
-                cart.add(matchedProduct);
-            }
-
             if (id.equalsIgnoreCase("x")) {
                 return;
             }
+
+            if (matchedProduct != null) {
+                System.out.printf("We carry %s and the price is $%.2f\n", matchedProduct.getName(), matchedProduct.getPrice());
+                cart.add(matchedProduct);
+            } else {
+                System.out.println("We don't carry that product");
+            }
+
         }
 
         // TODO: show each product (id, name, price),
@@ -125,7 +125,7 @@ public class Store {
             price += priceCart.getPrice();
         }
 
-        if (price != 0){
+        if (price != 0) {
             System.out.println("Your total is : $" + price);
 
             String input;
@@ -143,10 +143,9 @@ public class Store {
                     System.out.println("invalid input please try again");
                 }
             } while (!input.equalsIgnoreCase("c"));
-        }else {
+        } else {
             System.out.println("no items in cart yet");
         }
-
 
 
         // TODO:
@@ -165,27 +164,29 @@ public class Store {
      */
     public static void checkOut(List<Product> cart, double totalAmount, Scanner scanner) {
 
-        System.out.println("are you ready to checkout?: (y/n): ");
-        String input = scanner.nextLine();
 
-        if (input.equalsIgnoreCase("y")) {
-            System.out.println("your total is : $" + totalAmount);
-            System.out.println("enter your payment amount");
+        System.out.println("your total is : $" + totalAmount);
+        System.out.println("enter your payment amount: ");
+
+        boolean isTrue = true;
+
+        while (true) {
+
             double payment = scanner.nextDouble();
             scanner.nextLine();
+
             if (payment >= totalAmount) {
                 double change = payment - totalAmount;
-                System.out.printf("Your change is: $%.2f", change);
+                System.out.printf("Your change is: $%.2f, Thank you for shopping with us", change);
                 cart.clear();
+                isTrue = false;
+                return;
             } else {
-                System.out.println("that is not enough money");
-            }
+                System.out.println("Not enough money, Please enter more: ");
 
-        } else if (input.equalsIgnoreCase("n")) {
-            System.out.println("going back to home screen");
-        } else {
-            System.out.println("invalid input please try again");
+            }
         }
+
 
         // TODO: implement steps listed above
     }
