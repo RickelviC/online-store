@@ -104,11 +104,14 @@ public class Store {
             cart.add(matchedProduct);
 
             System.out.println();
-            System.out.println("Do you want to Stop?(x to go back to main menu) ");
+            System.out.println("Do you want to Stop?");
+            System.out.println("(x to go back to main menu)"/*or (c to continue to cart)*/);
             String input = scanner.nextLine();
             if (input.equalsIgnoreCase("x")) {
                 return;
-            }
+            } /*else if (input.equalsIgnoreCase("c")) {
+                displayCart(cart,scanner);
+            }*/
         }
 
         // TODO: show each product (id, name, price),
@@ -123,6 +126,27 @@ public class Store {
         for (Product product : cart) {
             System.out.println(product);
         }
+        double price = 0;
+        for (Product priceCart : cart) {
+            price += priceCart.getPrice();
+        }
+        System.out.println("Your total is : $" + price);
+
+        String input;
+
+        do {
+            System.out.println();
+            System.out.println("Do you want to Stop?");
+            System.out.println("(x to go back to main menu)or (c to continue to cart)");
+            input = scanner.nextLine();
+            if (input.equalsIgnoreCase("x")) {
+                return;
+            } else if (input.equalsIgnoreCase("c")) {
+                checkOut(cart,price,scanner);
+            }
+        } while (!input.equalsIgnoreCase("c"));
+
+
         // TODO:
         //   • list each product in the cart
         //   • compute the total cost
