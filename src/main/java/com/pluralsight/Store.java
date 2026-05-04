@@ -99,7 +99,7 @@ public class Store {
             }
 
             if (matchedProduct != null) {
-                System.out.printf("We carry %s and the price is $%.2f\n", matchedProduct.getName(), matchedProduct.getPrice());
+                System.out.printf("We added %s to the cart and the price is $%.2f for one\n", matchedProduct.getName(), matchedProduct.getPrice());
                 cart.add(matchedProduct);
             } else {
                 System.out.println("We don't carry that product");
