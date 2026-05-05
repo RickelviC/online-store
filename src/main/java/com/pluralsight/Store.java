@@ -119,13 +119,12 @@ public class Store {
      * and offers the option to check out.
      */
     public static void displayCart(List<Product> cart, Scanner scanner) {
-        tableHeader();
         HashSet<Product> uniqueProduct = new HashSet<>(cart);
 
         for (Product product : uniqueProduct) {
             System.out.println(product + " " + Collections.frequency(cart, product));
         }
-        tableFooter();
+
 
         double price = 0;
         for (Product priceCart : cart) {
@@ -153,7 +152,6 @@ public class Store {
         } else {
             System.out.println("no items in cart yet");
         }
-
 
         // TODO:
         //   • list each product in the cart
