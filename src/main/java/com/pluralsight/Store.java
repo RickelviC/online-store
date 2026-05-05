@@ -85,9 +85,11 @@ public class Store {
      * Typing X returns to the main menu.
      */
     public static void displayProducts(List<Product> inventory, List<Product> cart, Scanner scanner) {
+        tableHeader();
         for (Product product : inventory) {
             System.out.println(product);
         }
+        tableFooter();
         while (true) {
             System.out.print("\nWhat item ID are you interested in?(X return to main menu): ");
             String id = scanner.nextLine();
@@ -105,6 +107,7 @@ public class Store {
                 System.out.println("We don't carry that product");
             }
 
+
         }
 
         // TODO: show each product (id, name, price),
@@ -116,11 +119,13 @@ public class Store {
      * and offers the option to check out.
      */
     public static void displayCart(List<Product> cart, Scanner scanner) {
+        tableHeader();
         HashSet<Product> uniqueProduct = new HashSet<>(cart);
 
         for (Product product : uniqueProduct) {
-            System.out.println(product + " : " + Collections.frequency(cart,product) );
+            System.out.println(product + " " + Collections.frequency(cart, product));
         }
+        tableFooter();
 
         double price = 0;
         for (Product priceCart : cart) {
@@ -167,7 +172,7 @@ public class Store {
     public static void checkOut(List<Product> cart, double totalAmount, Scanner scanner) {
 
 
-        System.out.printf("your total is : $%.2f\n" , totalAmount);
+        System.out.printf("your total is : $%.2f\n", totalAmount);
         System.out.println("enter your payment amount: ");
 
         boolean isTrue = true;
@@ -184,7 +189,8 @@ public class Store {
                 isTrue = false;
                 return;
             } else {
-                System.out.println("Not enough money, Please enter more: ");
+
+                System.out.println("\nNot enough money, Please enter more: ");
             }
         }
 
@@ -206,6 +212,17 @@ public class Store {
         return null;
 
         // TODO: loop over the list and compare ids
+    }
+
+    private static void tableHeader() {
+        System.out.println("-----------+------------------------------------------------+");
+        System.out.printf("\t%-7s|\t\t\t %2s\t\t\t\t\t |\t%s   |\n",
+                "id", "name", "price");
+        System.out.println("-----------+------------------------------------------------+");
+    }
+
+    private static void tableFooter() {
+        System.out.println("-----------+------------------------------------------------+");
     }
 
 }
